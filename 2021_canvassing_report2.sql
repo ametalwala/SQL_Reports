@@ -19,7 +19,7 @@ SELECT -- take all aggs move outside and above
     , ROUND(walk_successful_contacts::float/walks_attempted::float, 2) AS contact_rate
     , ROW_NUMBER() OVER (PARTITION BY cc.vb_voterbase_id, cc.datecanvassed::date ORDER BY cc.datecanvassed::date) vb_rank
 FROM tmc_van.cpd_ngp_contact_attempts_summary_vf cc
-LEFT JOIN
+LEFT JOIN  
 (
 SELECT *
 FROM ts.ntl_current p
