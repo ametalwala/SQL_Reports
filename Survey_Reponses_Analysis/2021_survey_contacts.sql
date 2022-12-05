@@ -17,8 +17,6 @@ SELECT
     , csr.datecanvassed 
     , csr.campaignid 
 FROM tmc_van.cpd_ngp_contactssurveyresponses_vf csr
---WHERE vanid IS NOT NULL 
---AND csr.statecode = 'GA'
 ) survey_contacts
 LEFT JOIN
 (
@@ -33,11 +31,5 @@ SELECT sr.surveyresponseid
   		, sr.surveyquestionid
   		, sr.surveyresponsename
 FROM tmc_van.cpd_ngp_surveyresponses sr
---WHERE sr.surveyresponseid IS NOT NULL 
---AND sr.surveyquestionid IS NOT NULL
---AND sr.surveyresponsename IS NOT NULL 
-) survey_response ON survey_question.surveyquestionid = survey_response.surveyquestionid AND survey_contacts.response_id = survey_response.surveyresponseid
---WHERE survey_contacts.campaignid IS NOT NULL
---AND survey_question.surveyquestionname IS NOT NULL 
---AND survey_response.surveyresponsename IS NOT NULL 
+) survey_response ON survey_question.surveyquestionid = survey_response.surveyquestionid AND survey_contacts.response_id = survey_response.surveyresponseid 
 ORDER BY 1

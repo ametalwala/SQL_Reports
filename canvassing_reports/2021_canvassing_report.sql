@@ -8,7 +8,7 @@ SELECT
     , COUNT(CASE WHEN cc.vb_rank = 1 THEN cc.vanid END) AS total_attempts -- bc there could be people in there 4 time
 FROM
 (
-SELECT -- take all aggs move outside and above 
+SELECT 
     *
     , ROW_NUMBER() OVER (PARTITION BY cc.vanid, cc.datecanvassed::date ORDER BY cc.datecanvassed::date) vb_rank
     , ROW_NUMBER() OVER (PARTITION BY tn.vb_voterbase_household_id, cc.datecanvassed::date ORDER BY cc.datecanvassed::date) household_rank
